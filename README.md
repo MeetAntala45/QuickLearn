@@ -1,1 +1,1 @@
-QuickLearn - A Learning Management System
+# QuickLearn - A Learning Management System
