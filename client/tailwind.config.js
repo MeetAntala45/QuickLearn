@@ -9,7 +9,11 @@ export default {
         'home-heading-small' : ['28px', '34px'],
         'home-heading-large' : ['40px', '50px'],
         'default' : ['15px', '21px']
+      },
+      gridTemplateColumns:{
+        'auto' : 'repeat(auto-fit, minmax(200px,1fr))'
       }
+
     },
   },
   plugins: [],
