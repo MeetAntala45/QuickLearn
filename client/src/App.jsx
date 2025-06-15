@@ -12,15 +12,14 @@ import MyCourses from "./pages/educator/MyCourses";
 import Dashboard from "./pages/educator/Dashboard";
 import StudentEnrolled from "./pages/educator/StudentsEnrolled";
 import Navbar from "./components/student/Navbar";
-
+import "quill/dist/quill.snow.css";
 const App = () => {
-
-  const isEducatorRoute = useMatch('/educator/*')
+  const isEducatorRoute = useMatch("/educator/*");
 
   return (
-    <div className='text-default min-h-screen bg-white'>
+    <div className="text-default min-h-screen bg-white">
       {!isEducatorRoute && <Navbar />}
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/course-list" element={<CoursesList />} />
