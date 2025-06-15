@@ -25,8 +25,8 @@ const CoursesList = () => {
 
   return (
     <>
-      <div className="relative md:px-36 px-8 pt-20 text-left">
-        <div className="flex md:flex-row flex-col gap-6 items-start justify-between w-full">
+      <div className="relative md:px-36 px-8 pt-20 text-left ">
+        <div className="flex md:flex-row flex-col gap-6 items-start justify-between w-full ">
           <div>
             <h1 className="text-4xl font-semibold text-gray-800">
               Course List

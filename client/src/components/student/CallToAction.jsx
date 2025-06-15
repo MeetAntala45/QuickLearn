@@ -10,7 +10,7 @@ const CallToAction = () => {
         veniam aliqua proident excepteur commodo do ea.
       </p>
       <div className="flex items-center font-medium gap-6 mt-4">
-      <button className="px-10 py-3 rounded-md text-white bg-blue-600">Get Stared</button>
+      <button className="px-10 py-3 rounded-md text-white bg-gray-600">Get Stared</button>
       <button className="flex items-center gap-2">
         Learn more <img src={assets.arrow_icon} alt="arrow_icon" />
       </button>
