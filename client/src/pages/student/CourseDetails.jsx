@@ -40,8 +40,8 @@ const CourseDetails = () => {
 
   return courseData ? (
     <>
-      <div className="flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-30 pt-20 text-left">
-        <div className="absolute top-0 left-0 w-full h-section-height -z-1 bg-gradient-to-b from-gray-300/70"></div>
+      <div className="flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-30 pt-20 text-left bg-gradient-to-b from-gray-100/70">
+        <div className="absolute top-0 left-0 w-full h-section-height -z-1"></div>
 
         <div className="max-w-xl z-10 text-gray-500">
           <h1 className="md:text-course-details-heading-large text-course-details-heading-small font-semibold text-gray-800">

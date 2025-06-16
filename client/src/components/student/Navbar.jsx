@@ -11,13 +11,13 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex items-center justify-between px-4 sm:px-10 md:px-14 lg:px-36 border-b border-gray-500 py-4 bg-gray-300/70`}
+      className={`flex items-center justify-between px-4 sm:px-10 md:px-14 lg:px-36 border-b border-gray-500 py-4 bg-gray-100/70`}
     >
       <img
         onClick={() => navigate("/")}
         src={assets.logo}
         alt="Logo"
-        className="w-28 lg:w-60  cursor-pointer"
+        className="w-28 lg:w-40  cursor-pointer"
       />
       <div className="hidden md:flex itmes-center gap-5 text-gray-500">
         <div>
