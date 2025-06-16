@@ -82,3 +82,33 @@ export const purchaseCourse = async (req, res) => {
     res.json({ success: false, message: error.message })
   }
 }
+
+
+// update user course progress
+export const updateUserCourseProgress = async (req, res) => {
+  try {
+    const userId = req.auth.userId;
+    const { courseId, lectureId } = req.body;
+
+    const progressData = await CourseProgress.findOne({ userId, courseId });
+    if (progressData) {
+      if (progressData.lectureCompleted.includes(lectureId)) {
+        return res.json({ success: false, message: 'Lecture already completed' })
+      }
+      progressData.lectureCompleted.push(lectureId);
+      await progressData.save();
+    }
+    else {
+      await CourseProgress.create({
+        userId,
+        courseId,
+        lectureCompleted: [lectureId]
+      })
+    }
+    res.json({ success: true, message: 'Progress updated successfully' })
+
+  } catch (error) {
+    res.json({ success: false, message: error.message })
+
+  }
+}
