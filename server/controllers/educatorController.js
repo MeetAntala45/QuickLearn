@@ -48,3 +48,78 @@ export const addCourse = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+// get educator courses
+
+export const getEducatorCourses = async (req, res) => {
+  try {
+    const educatorId = req.auth.userId;
+    const courses = await Course.find({ educator: educatorId })
+
+    res.json({ success: true, courses });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
+
+
+// get educator dashboard data
+export const educatorDashboardData = async (req, res) => {
+  try {
+    const educator = req.auth.userId;
+    const courses = await Course.find({ educator });
+    const totalCourses = courses.length;
+    const courseIds = courses.map(course => course._id);
+
+    //calculate total earning from purchases
+    const purchases = await Purchase.find({ courseId: { $in: courseIds }, status: 'completed' });
+    const totalEarnings = purchases.reduce((acc, purchase) => acc + purchase.amount, 0);
+
+    // collect unique enrolled student ids with their course titles
+    const enrolledStudentsData = [];
+    for (const course of courses) {
+      const students = await User.find({ _id: { $in: course.enrolledStudents } }, 'name imageUrl');
+      students.forEach(student => {
+        enrolledStudentsData.push({
+          courseTitle: course.courseTitle,
+          student
+        });
+      });
+    }
+
+    res.json({
+      success: true, dashboardData: {
+        totalEarnings,
+        enrolledStudents,
+        totalCourses
+      }
+    })
+
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
+
+
+// get enrolled student data with purchase data
+export const getEnrolledStudentsData = async (req, res) => {
+  try {
+    const educator = req.auth.userId;
+    const courses = await Course.find({ educator });
+    const courseIds = courses.map(course => course._id);
+
+    const purchases = await Purchase.find({ courseId: { $in: courseIds }, status: 'completed' })
+      .populate('userId', 'name imageUrl').populate('courseId', 'courseTitle');
+
+    const enrolledStudents = purchases.map(purchase => ({
+      student: purchase.userId,
+      courseTitle: purchase.courseId.courseTitle,
+      purchaseDate: purchase.createdAt
+    }));
+
+    res.json({ success: true, enrolledStudents });
+
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+}
