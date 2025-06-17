@@ -2,6 +2,9 @@
 
 QuickLearn is a full-stack Learning Management System (LMS) built with the MERN stack (MongoDB, Express.js, React.js, Node.js). It provides a scalable, secure, and user-friendly platform where instructors can publish courses and users can browse, purchase, and access educational content.
 
+## 🖼️ Demo
+
+Try the live version here: [https://quicklearn-meet-antala.vercel.app/](https://quicklearn-meet-antala.vercel.app/)
 ## 🌟 Features
 
 - 🔐 User authentication using Clerk
